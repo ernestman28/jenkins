@@ -12,7 +12,7 @@ pipeline {
 	stage('Build') {    
 		steps {
 			echo 'Build'
-                        //powershell "C:\repos\spo-intranet\NT.Intranet\NT.Intranet\NT.Deployment\CI_Install.ps1" -tenant "NT_TEST_GULP"
+                        powershell "C:/repos/spo-intranet/NT.Intranet/NT.Intranet/NT.Deployment/CI_Install.ps1" -tenant "NT_TEST_GULP"
                 }
 	}
         stage('Test: Functional')  {
