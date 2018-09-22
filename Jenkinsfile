@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+            git branch: 'F_CI_Build', credentialsId: 'd6ce97b6-bb88-47bc-8223-c185a5164ac5', url: 'https://ernestman@bitbucket.org/nationaltrust/spo-intranet.git'
+    }
     environment {
         OUTPUT_PATH = 'C:/Repos/spo-intranet'
     }
@@ -12,7 +14,7 @@ pipeline {
 	stage('Build') {    
 		steps {
 			echo 'Build'
-                        powershell "C:/repos/spo-intranet/NT.Intranet/NT.Intranet/NT.Deployment/CI_Install.ps1" -tenant "NT_TEST_GULP"
+                        powershell "C:/repos/spo-intranet/NT.Intranet/NT.Intranet/NT.Deployment/CI_Install.ps1"
                 }
 	}
         stage('Test: Functional')  {
