@@ -36,10 +36,14 @@ pipeline {
                 }
         }
         stage('Approval') {
-                input('Do you want to proceed?')
+                steps {
+                        input('Do you want to proceed?')
+                }
         }
         stage('Deploy: TEST Tenant') {
-                
+                steps {
+                        echo 'Deploy to TEST'
+                }
         }
     }
 }
