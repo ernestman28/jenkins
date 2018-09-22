@@ -3,39 +3,43 @@ pipeline {
     stages {
         stage('Setup') {
                 steps {
-                        echo 'Hi, this is Ernest from EMSYS Solution!!!'
-			
+                        echo 'Perform Setup Steps!!!'
                 }
         }
-	    stage('Build'){
-		    
+	stage('Build') {    
 		steps {
-			input('Do you want to proceed?')
-        }
-	    }
-        stage('Code Review')  {
+			echo 'Build'
+                }
+	}
+        stage('Test: Functional')  {
                 when {
                         not {
                                 branch "master"
                         }
                 }
                 steps {
-			echo "Hello Code Review"
-                        }
+			echo "Hello Test: Functional"
+                }
         }
-        stage('Test') {
+        stage('Test: load-&-security') {
                 parallel {
                         stage('Unit Test') {
                                 steps{
-                                        echo "Running the unit test..."
+                                        echo "Running unit test..."
                                 }
                         }
                         stage('Integration test') {
 				steps {
-					echo 'Running the integration test..'
-				}
-                               
-			}  }
+					echo 'Running integration test..'
+				}        
+			}  
+                }
+        }
+        stage('Approval') {
+                input('Do you want to proceed?')
+        }
+        stage('Deploy: TEST Tenant') {
+                
         }
     }
 }
