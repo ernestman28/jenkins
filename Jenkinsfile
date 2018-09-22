@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        OUTPUT_PATH = 'C:\Repos\spo-intranet'
+        OUTPUT_PATH = 'C:/Repos/spo-intranet'
     }
     stages {
         stage('Setup') {
