@@ -9,6 +9,7 @@ pipeline {
 	stage('Build') {    
 		steps {
 			echo 'Build'
+                        powershell ".\funcional_tests.ps1"
                 }
 	}
         stage('Test: Functional')  {
@@ -19,20 +20,6 @@ pipeline {
                 }
                 steps {
 			echo "Hello Test: Functional"
-                }
-        }
-        stage('Test: load-&-security') {
-                parallel {
-                        stage('Unit Test') {
-                                steps{
-                                        echo "Running unit test..."
-                                }
-                        }
-                        stage('Integration test') {
-				steps {
-					echo 'Running integration test..'
-				}        
-			}  
                 }
         }
         stage('Approval') {
