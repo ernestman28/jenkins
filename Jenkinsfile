@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        OUTPUT_PATH = 'C:\Repos\spo-intranet'
+    }
     stages {
         stage('Setup') {
                 steps {
@@ -9,7 +12,7 @@ pipeline {
 	stage('Build') {    
 		steps {
 			echo 'Build'
-                        powershell -File "C:\repos\spo-intranet\NT.Intranet\NT.Intranet\NT.Deployment\CI_Install.ps1" -tenant "NT_TEST_GULP"
+                        //powershell "C:\repos\spo-intranet\NT.Intranet\NT.Intranet\NT.Deployment\CI_Install.ps1" -tenant "NT_TEST_GULP"
                 }
 	}
         stage('Test: Functional')  {
